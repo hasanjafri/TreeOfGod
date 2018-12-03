@@ -7,7 +7,7 @@ public class PenguinMotor : MonoBehaviour {
   private const float LANE_DISTANCE = 3.0f;
   private const float TURN_SPEED = 0.05f;
 
-  private bool isGameStarted = false;
+  private bool isRunning = false;
 
   //Movement
   private CharacterController controller;
@@ -26,7 +26,7 @@ public class PenguinMotor : MonoBehaviour {
 
   private void Update()
   {
-    if (!isGameStarted)
+    if (!isRunning)
     {
       return;
     }
@@ -106,6 +106,6 @@ public class PenguinMotor : MonoBehaviour {
 
   public void StartRunning()
   {
-    isGameStarted = true;
+    isRunning = true;
   }
 }
