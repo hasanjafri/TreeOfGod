@@ -67,6 +67,10 @@ public class PenguinMotor : MonoBehaviour {
         myAnimator.SetTrigger("Jumping");
         verticalVelocity = jumpForce;
       }
+      else if(MobileInput.Instance.SwipeDown)
+            {
+                StartSliding();
+            }
     }
     else
     {
@@ -92,6 +96,20 @@ public class PenguinMotor : MonoBehaviour {
     }
   }
 
+    private void StartSliding()
+    {
+        myAnimator.SetBool("Sliding", true);
+        controller.height /= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+    }
+
+    private void StopSliding()
+    {
+        myAnimator.SetBool("Sliding", false);
+        controller.height *= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
+    }
+
   private void MoveLane(bool goingRight)
   {
     desiredLane += (goingRight) ? 1 : -1;
@@ -106,6 +124,23 @@ public class PenguinMotor : MonoBehaviour {
 
   public void StartRunning()
   {
-    isRunning = true;
+        isRunning = true;
+        myAnimator.SetTrigger("Running");
   }
+
+    private void Crash()
+    {
+        myAnimator.SetTrigger("isDead");
+        isRunning = false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch(hit.gameObject.tag)
+        {
+            case "Obstacle":
+                Crash();
+            break;
+        }
+    }
 }
