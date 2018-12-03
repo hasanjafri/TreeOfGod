@@ -24,12 +24,13 @@ public class PenguinMotor : MonoBehaviour {
 
   private void Update()
   {
-    if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+    if (MobileInput.Instance.SwipeLeft)
     {
       MoveLane(false);
     }
 
-    if (Input.GetKeyDown(KeyCode.RightArrow))
+    if (MobileInput.Instance.SwipeRight)
     {
       MoveLane(true);
     }
@@ -55,7 +56,7 @@ public class PenguinMotor : MonoBehaviour {
     {
       verticalVelocity = -0.01f;
 
-      if (Input.GetKeyDown(KeyCode.Space))
+      if (MobileInput.Instance.SwipeUp)
       {
         myAnimator.SetTrigger("Jumping");
         verticalVelocity = jumpForce;
@@ -65,7 +66,7 @@ public class PenguinMotor : MonoBehaviour {
     {
       verticalVelocity -= (gravity * Time.deltaTime);
 
-      if (Input.GetKeyDown(KeyCode.Space))
+      if (MobileInput.Instance.SwipeDown)
       {
         verticalVelocity = -jumpForce;
       }
