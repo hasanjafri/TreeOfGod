@@ -5,9 +5,11 @@ using UnityEngine;
 public class PenguinMotor : MonoBehaviour {
 
   private const float LANE_DISTANCE = 3.0f;
+  private const float TURN_SPEED = 0.05f;
 
   //Movement
   private CharacterController controller;
+  private Animator myAnimator;
   private float jumpForce = 4.0f;
   private float gravity = 12.0f;
   private float verticalVelocity;
@@ -17,6 +19,7 @@ public class PenguinMotor : MonoBehaviour {
   private void Start()
   {
     controller = GetComponent<CharacterController>();
+    myAnimator = GetComponent<Animator>();
   }
 
   private void Update()
@@ -44,10 +47,42 @@ public class PenguinMotor : MonoBehaviour {
     //Calculate our move delta
     Vector3 moveVector = Vector3.zero;
     moveVector.x = (targetPosition - transform.position).normalized.x * speed;
-    moveVector.y = -0.1f;
+
+    bool isGrounded = IsGrounded();
+    myAnimator.SetBool("Grounded", isGrounded);
+
+    if (isGrounded)
+    {
+      verticalVelocity = -0.01f;
+
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+        myAnimator.SetTrigger("Jumping");
+        verticalVelocity = jumpForce;
+      }
+    }
+    else
+    {
+      verticalVelocity -= (gravity * Time.deltaTime);
+
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+        verticalVelocity = -jumpForce;
+      }
+    }
+    moveVector.y = verticalVelocity;
     moveVector.z = speed;
 
+    //Move
     controller.Move(moveVector * Time.deltaTime);
+
+    //Rotatation to where penguin is going
+    Vector3 dir = controller.velocity;
+    if (dir != Vector3.zero)
+    {
+      dir.y = 0;
+      transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
+    }
   }
 
   private void MoveLane(bool goingRight)
@@ -56,5 +91,9 @@ public class PenguinMotor : MonoBehaviour {
     desiredLane = Mathf.Clamp(desiredLane, 0, 2);
   }
 
-
+  private bool IsGrounded()
+  {
+    Ray groundRay = new Ray(new Vector3(controller.bounds.center.x, (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f, controller.bounds.center.z), Vector3.down);
+    return Physics.Raycast(groundRay, 0.2f + 0.1f);
+  }
 }
