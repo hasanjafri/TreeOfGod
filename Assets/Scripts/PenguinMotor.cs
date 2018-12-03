@@ -7,6 +7,8 @@ public class PenguinMotor : MonoBehaviour {
   private const float LANE_DISTANCE = 3.0f;
   private const float TURN_SPEED = 0.05f;
 
+  private bool isGameStarted = false;
+
   //Movement
   private CharacterController controller;
   private Animator myAnimator;
@@ -24,6 +26,10 @@ public class PenguinMotor : MonoBehaviour {
 
   private void Update()
   {
+    if (!isGameStarted)
+    {
+      return;
+    }
 
     if (MobileInput.Instance.SwipeLeft)
     {
@@ -96,5 +102,10 @@ public class PenguinMotor : MonoBehaviour {
   {
     Ray groundRay = new Ray(new Vector3(controller.bounds.center.x, (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f, controller.bounds.center.z), Vector3.down);
     return Physics.Raycast(groundRay, 0.2f + 0.1f);
+  }
+
+  public void StartRunning()
+  {
+    isGameStarted = true;
   }
 }
