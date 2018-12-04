@@ -1119,4 +1119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1338085319}
-  offset: {x: 0, y: 2.5, z: -2.5}
+  offset: {x: 0, y: 2.5, z: -5}
