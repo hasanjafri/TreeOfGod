@@ -15,11 +15,18 @@ public class PenguinMotor : MonoBehaviour {
   private float jumpForce = 4.0f;
   private float gravity = 12.0f;
   private float verticalVelocity;
-  private float speed = 7.0f;
   private int desiredLane = 1; // 0 = Left, 1 = Middle, 2 = Right
+
+    // Speed Modifiers
+  private float originalSpeed = 7.0f;
+  private float speed;
+  private float speedIncreaseLastTick;
+  private float speedIncreaseTime = 2.5f;
+  private float speedIncreaseAmount = 0.1f;
 
   private void Start()
   {
+    speed = originalSpeed;
     controller = GetComponent<CharacterController>();
     myAnimator = GetComponent<Animator>();
   }
@@ -30,6 +37,13 @@ public class PenguinMotor : MonoBehaviour {
     {
       return;
     }
+
+    if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        {
+            speedIncreaseLastTick = Time.time;
+            speed += speedIncreaseAmount;
+            GameManager.Instance.UpdateModifier(speed - originalSpeed);
+        }
 
     if (MobileInput.Instance.SwipeLeft)
     {

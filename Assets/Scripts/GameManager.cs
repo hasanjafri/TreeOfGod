@@ -16,9 +16,10 @@ public class GameManager : MonoBehaviour {
   private void Awake()
   {
         Instance = this;
-        UpdateScores();
         motor = GameObject.FindGameObjectWithTag("Player").GetComponent<PenguinMotor>();
-  }
+        modifierScore = 1;
+        UpdateScores();
+    }
 
   private void Update()
   {
@@ -27,12 +28,25 @@ public class GameManager : MonoBehaviour {
             isGameStarted = true;
             motor.StartRunning();
         }
+
+        if (isGameStarted)
+        {
+            //Handle score
+            score += (Time.deltaTime * modifierScore);
+            scoreText.text = score.ToString("0");
+        }
   }
 
   public void UpdateScores()
   {
         scoreText.text = score.ToString();
         coinText.text = coinScore.ToString();
-        modifierText.text = modifierScore.ToString();
+        modifierText.text = "x" + modifierScore.ToString("0.0");
   }
+
+    public void UpdateModifier(float modifierAmount)
+    {
+        modifierScore = 1.0f + modifierAmount;
+        UpdateScores();
+    }
 }
