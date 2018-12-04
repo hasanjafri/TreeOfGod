@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour {
         
         if (p == null)
         {
-            GameObject go;
+            GameObject go = null;
             if (pt == PieceType.ramp)
             {
                 go = ramps[visualIndex].gameObject;
@@ -31,6 +31,18 @@ public class LevelManager : MonoBehaviour {
             {
                 go = longBlocks[visualIndex].gameObject;
             }
+            else if (pt == PieceType.jump)
+            {
+                go = jumps[visualIndex].gameObject;
+            }
+            else if (pt == PieceType.slide)
+            {
+                go = slides[visualIndex].gameObject;
+            }
+
+            go = Instantiate(go);
+            p = go.GetComponent<Piece>();
+            pieces.Add(p);
         }
 
         return p;

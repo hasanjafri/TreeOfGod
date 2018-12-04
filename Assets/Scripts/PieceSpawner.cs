@@ -9,6 +9,7 @@ public class PieceSpawner : MonoBehaviour {
 
     public void Spawn()
     {
+        currentPiece = LevelManager.Instance.GetPiece(type, 0);
         currentPiece.gameObject.SetActive(true);
         currentPiece.transform.SetParent(transform, false);
     }
