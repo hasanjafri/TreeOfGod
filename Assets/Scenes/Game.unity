@@ -584,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1200175475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -870,8 +870,12 @@ MonoBehaviour:
   slides:
   - {fileID: 114413599572919724, guid: 5d7038e93c5e39c42b3906a3123d7686, type: 2}
   pieces: []
-  availableSegments: []
-  availableTransitions: []
+  availableSegments:
+  - {fileID: 114502615569416292, guid: 3128f8a60e8b0414c8345afc70c2d3db, type: 2}
+  - {fileID: 114705725718851228, guid: 982246f0020c90c46b8a1f8bf577425f, type: 2}
+  - {fileID: 114311950113736018, guid: 4ecdd4399dbad074db0edadd862b8e7f, type: 2}
+  availableTransitions:
+  - {fileID: 114358334498122200, guid: a350d3dcb9e0547428834867bbb2d7d2, type: 2}
   activeSegments: []
 --- !u!1 &1576291610
 GameObject:
@@ -1173,4 +1177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1338085319}
-  offset: {x: 0, y: 2.5, z: -5}
+  offset: {x: 0, y: 1.25, z: -2.5}
