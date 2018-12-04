@@ -819,6 +819,60 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377730903}
   m_CullTransparentMesh: 0
+--- !u!1 &1557484600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557484601}
+  - component: {fileID: 1557484602}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1557484601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1557484600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1557484602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1557484600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accd222d52a228f4496081b39d289cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ramps:
+  - {fileID: 114352065641820144, guid: aa5ba76126b865c4fac48169663e26bd, type: 2}
+  - {fileID: 114809812560717416, guid: 8fcf49da746702b4689904242d6fbbdf, type: 2}
+  longBlocks:
+  - {fileID: 114828086912055900, guid: 3a83119b07625954da1940eee9ee3902, type: 2}
+  - {fileID: 114806676491280434, guid: 40c95cea9a83a6a4ea9d9d71bf32318d, type: 2}
+  jumps:
+  - {fileID: 114348962588864314, guid: 3f45a3c5ac2e61e42acd7f71558359bd, type: 2}
+  slides:
+  - {fileID: 114413599572919724, guid: 5d7038e93c5e39c42b3906a3123d7686, type: 2}
+  pieces: []
+  availableSegments: []
+  availableTransitions: []
+  activeSegments: []
 --- !u!1 &1576291610
 GameObject:
   m_ObjectHideFlags: 0

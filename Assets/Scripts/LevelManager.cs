@@ -24,12 +24,12 @@ public class LevelManager : MonoBehaviour {
     public List<Piece> longBlocks = new List<Piece>();
     public List<Piece> jumps = new List<Piece>();
     public List<Piece> slides = new List<Piece>();
-    public List<Piece> pieces = new List<Piece>(); // All the pieces in the pool
+    [HideInInspector] public List<Piece> pieces = new List<Piece>(); // All the pieces in the pool
 
     //List of segments
     public List<Segment> availableSegments = new List<Segment>();
     public List<Segment> availableTransitions = new List<Segment>();
-    public List<Segment> activeSegments = new List<Segment>();
+    [HideInInspector] public List<Segment> activeSegments = new List<Segment>();
 
     //Gameplay
     private bool isMoving = false;
