@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PieceSpawner : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public PieceType type;
+    private Piece currentPiece;
+
+    public void Spawn()
+    {
+        currentPiece.gameObject.SetActive(true);
+        currentPiece.transform.SetParent(transform, false);
+    }
+
+    public void DeSpawn()
+    {
+        currentPiece.gameObject.SetActive(false);
+    }
 }
