@@ -72,12 +72,61 @@ public class LevelManager : MonoBehaviour {
         List<Segment> possibleSegment = availableSegments.FindAll(x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         int id = Random.Range(0, possibleSegment.Count);
 
-        // Segment s = possibleSegment[id];
+        Segment s = GetSegment(id, false);
+
+        y1 = s.endY1;
+        y2 = s.endY2;
+        y3 = s.endY3;
+
+        s.transform.SetParent(transform);
+        s.transform.localPosition = Vector3.forward * currentSpawnZ;
+
+        currentSpawnZ += s.length;
+        amountOfActiveSegments++;
+        s.Spawn();
     }
 
     private void SpawnTransition()
     {
+        List<Segment> possibleTransition = availableTransitions.FindAll(x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
+        int id = Random.Range(0, possibleTransition.Count);
 
+        Segment s = GetSegment(id, true);
+
+        y1 = s.endY1;
+        y2 = s.endY2;
+        y3 = s.endY3;
+
+        s.transform.SetParent(transform);
+        s.transform.localPosition = Vector3.forward * currentSpawnZ;
+
+        currentSpawnZ += s.length;
+        amountOfActiveSegments++;
+        s.Spawn();
+    }
+
+    public Segment GetSegment(int id, bool transition)
+    {
+        Segment s = null;
+        s = activeSegments.Find(x => x.SegId == id && x.transition == transition && !x.gameObject.activeSelf);
+        
+        if (s == null)
+        {
+            GameObject go = Instantiate((transition) ? availableTransitions[id].gameObject : availableSegments[id].gameObject as GameObject);
+            s = go.GetComponent<Segment>();
+
+            s.SegId = id;
+            s.transition = transition;
+
+            activeSegments.Insert(0, s);
+        }
+        else
+        {
+            activeSegments.Remove(s);
+            activeSegments.Insert(0, s);
+        }
+
+        return s;
     }
 
     public Piece GetPiece(PieceType pt, int visualIndex)
