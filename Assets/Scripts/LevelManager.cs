@@ -51,6 +51,20 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        if (currentSpawnZ - cameraContainer.position.z < DISTANCE_BEFORE_SPAWN)
+        {
+            GenerateSegment();
+        }
+
+        if (amountOfActiveSegments >= MAX_SEGMENTS_ON_SCREEN)
+        {
+            activeSegments[amountOfActiveSegments - 1].DeSpawn();
+            amountOfActiveSegments--;
+        }
+    }
+
     private void GenerateSegment()
     {
         SpawnSegment();
