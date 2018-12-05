@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
 
-	public static LevelManager Instance { set; get; }
+    public bool SHOW_COLLIDER = true;
 
-    private const bool SHOW_COLLIDER = true;
+    public static LevelManager Instance { set; get; }
 
     //Level spawning mechanics
     private const float DISTANCE_BEFORE_SPAWN = 100.0f;

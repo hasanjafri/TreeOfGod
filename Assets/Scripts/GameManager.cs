@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    private const int COIN_SCORE_AMOUNT = 5;
+  private const int COIN_SCORE_AMOUNT = 5;
 
   public static GameManager Instance { set; get; }
 
+  public bool isDead { set; get; }
   private bool isGameStarted = false;
   private PenguinMotor motor;
 
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour {
             motor.StartRunning();
         }
 
-        if (isGameStarted)
+        if (isGameStarted && !isDead)
         {
             //Handle score
             score += (Time.deltaTime * modifierScore);

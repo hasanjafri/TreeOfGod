@@ -146,6 +146,7 @@ public class PenguinMotor : MonoBehaviour {
     {
         myAnimator.SetTrigger("isDead");
         isRunning = false;
+        GameManager.Instance.isDead = true;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

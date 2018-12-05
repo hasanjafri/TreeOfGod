@@ -859,6 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accd222d52a228f4496081b39d289cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SHOW_COLLIDER: 0
   ramps:
   - {fileID: 114352065641820144, guid: aa5ba76126b865c4fac48169663e26bd, type: 2}
   - {fileID: 114809812560717416, guid: 8fcf49da746702b4689904242d6fbbdf, type: 2}
