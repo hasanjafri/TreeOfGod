@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour {
   private float score, coinScore, modifierScore;
   private int lastScore;
 
+  public Animator deathMenuAnim;
+  public Text deadScoreText, deadCoinText;
+
   private void Awake()
   {
         Instance = this;
@@ -59,5 +62,18 @@ public class GameManager : MonoBehaviour {
     {
         modifierScore = 1.0f + modifierAmount;
         modifierText.text = "x" + modifierScore.ToString("0.0");
+    }
+
+    public void onPlayButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
+
+    public void onDeath()
+    {
+        isDead = true;
+        deadScoreText.text = score.ToString("0");
+        deadCoinText.text = coinScore.ToString("0");
+        deathMenuAnim.SetTrigger("Dead");
     }
 }
