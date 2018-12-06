@@ -753,6 +753,7 @@ MonoBehaviour:
   - {fileID: 114502615569416292, guid: 3128f8a60e8b0414c8345afc70c2d3db, type: 2}
   - {fileID: 114705725718851228, guid: 982246f0020c90c46b8a1f8bf577425f, type: 2}
   - {fileID: 114311950113736018, guid: 4ecdd4399dbad074db0edadd862b8e7f, type: 2}
+  - {fileID: 114504399647041948, guid: 46e71bf80bfced447b4c5cd2ac1a67a2, type: 2}
   availableTransitions:
   - {fileID: 114358334498122200, guid: a350d3dcb9e0547428834867bbb2d7d2, type: 2}
   activeSegments: []
