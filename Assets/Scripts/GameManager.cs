@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
   private bool isGameStarted = false;
   private PenguinMotor motor;
 
+  public Animator gameCanvas;
   public Text scoreText, coinText, modifierText;
   private float score, coinScore, modifierScore;
   private int lastScore;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour {
             motor.StartRunning();
             FindObjectOfType<GlacierSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isMoving = true;
+            gameCanvas.SetTrigger("Show");
         }
 
         if (isGameStarted && !isDead)
