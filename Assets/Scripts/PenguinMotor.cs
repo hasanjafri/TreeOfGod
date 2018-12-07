@@ -115,6 +115,7 @@ public class PenguinMotor : MonoBehaviour {
         myAnimator.SetBool("Sliding", true);
         controller.height /= 2;
         controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+        Invoke("StopSliding", 1.0f);
     }
 
     private void StopSliding()
