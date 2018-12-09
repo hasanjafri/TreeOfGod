@@ -4,6 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Curvature("Curvature", Float) = 0.001
+		_ColorTint("Color Tint", Color) = (1, 1, 1, 1)
 	}
 	SubShader
 	{
@@ -15,6 +16,7 @@
 
 			uniform sampler2D _MainTex;
 			uniform float _Curvature;
+			uniform fixed4 _ColorTint;
 
 			struct Input
 			{
@@ -32,8 +34,8 @@
 
 			void surf(Input IN, inout SurfaceOutput o)
 			{
-				half4 c = tex2D(_MainTex, IN.uv_MainTex);
-				o.Albedo = c.rbg;
+				half4 c = tex2D(_MainTex, IN.uv_MainTex) * _ColorTint;
+				o.Albedo = c.rgb;
 				o.Alpha = c.a;
 			}
 		ENDCG

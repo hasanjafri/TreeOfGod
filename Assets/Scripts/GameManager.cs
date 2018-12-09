@@ -82,5 +82,12 @@ public class GameManager : MonoBehaviour {
         deadScoreText.text = score.ToString("0");
         deadCoinText.text = coinScore.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
+        gameCanvas.SetTrigger("Hide");
+
+        //Check if this is a hiscore
+        if (score > PlayerPrefs.GetInt("Hiscore"))
+        {
+            PlayerPrefs.SetInt("Hiscore", (int)score);
+        }
     }
 }
