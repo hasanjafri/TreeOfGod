@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
   private PenguinMotor motor;
 
   public Animator gameCanvas, menuAnim, diamondAnim;
-  public Text scoreText, coinText, modifierText;
+  public Text scoreText, coinText, modifierText, hiscoreText;
   private float score, coinScore, modifierScore;
   private int lastScore;
 
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
         modifierText.text = "x" + modifierScore.ToString("0.0");
         coinText.text = coinScore.ToString("0");
         scoreText.text = scoreText.text = score.ToString("0");
+        hiscoreText.text = PlayerPrefs.GetInt("Hiscore").ToString();
     }
 
   private void Update()
@@ -87,7 +88,12 @@ public class GameManager : MonoBehaviour {
         //Check if this is a hiscore
         if (score > PlayerPrefs.GetInt("Hiscore"))
         {
-            PlayerPrefs.SetInt("Hiscore", (int)score);
+            float s = score;
+            if (s % 1 == 0)
+            {
+                s += 1;
+            }
+            PlayerPrefs.SetInt("Hiscore", (int)s);
         }
     }
 }
