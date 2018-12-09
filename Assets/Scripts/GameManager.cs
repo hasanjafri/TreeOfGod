@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
   private bool isGameStarted = false;
   private PenguinMotor motor;
 
-  public Animator gameCanvas, menuAnim;
+  public Animator gameCanvas, menuAnim, diamondAnim;
   public Text scoreText, coinText, modifierText;
   private float score, coinScore, modifierScore;
   private int lastScore;
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
     public void GetCoin()
     {
+        diamondAnim.SetTrigger("Collect");
         coinScore++;
         coinText.text = coinScore.ToString("0");
         score += COIN_SCORE_AMOUNT;
